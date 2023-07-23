@@ -8,49 +8,44 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const DIV_ANIMATION = styled.div`
     width: 200px;
     height: 100vh;
-    background: red;
     position: fixed;
+    background: linear-gradient(360deg, #2a170b 0%, #794509 35%, #b84000 100%);    
     top: 0%;
-    left: 0%;
-    /* display: flex;
+    left: 100%;
+    transform: translateX(-100%);
+    padding: 10px;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-end; */
+    align-items: flex-end;
     @keyframes fadeIn {
        0%{
         opacity: 0;
-        transform: translateX(-2rem);
+        transform: translateX(0);
        }
        100%{
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(-2rem);
        } 
     }
-    @keyframes fadeOut {
-        0% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(2rem);
-        }
+    i{
+        cursor: pointer;
     }
     ul{
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: flex-end;
+        align-items: flex-start;
         padding-left: 10px;
         li{
             list-style: none;
             cursor: pointer;
             transition: all .3s;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             &:hover{
-                border-bottom: solid 1px #ff7b00;
-                color: #ff7b00;
+                border-bottom: solid 1px #ffffff;
                 transform: translateY(-3px);
                 transition: all .3s;
             }
@@ -65,8 +60,8 @@ const HamburgerMenu = ({userMenu}) => {
     const {menu, setMenu} = userMenu;
 
     return (
-        <DIV_ANIMATION style={{animation: menu ? 'fadeIn .2s ease-in' : 'fadeOut .2s ease-in-out'}}>
-            <i className="bi bi-caret-left-fill fs-3 text-white" onClick={() => setMenu(false)}></i>
+        <DIV_ANIMATION style={{animation: menu && 'fadeIn .3s ease-in-out'}}>
+            <i className="bi bi-caret-right-fill fs-3 text-white" onClick={() => setMenu(false)}></i>
             <ul>
                 <li>خانه</li>
                 <li>محصولات</li>

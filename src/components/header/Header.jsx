@@ -21,19 +21,47 @@ const HEADER = styled.header`
         background-size: 150% 100%;
     }
     @media (max-width: 380px) {
-        background-size: 180% 100%;
+        background-size: 200% 100%;
     }
     section{
         width: 100%;
         display: flex;
-        justify-content: flex-start;
+        flex-direction: row-reverse;
+        justify-content: space-between;
         align-items: center;
-        img{
-            width: 100px;
-            height: 100px;
+        .logo{
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-left: 140px;
+            @media (max-width: 768px) {
+                margin-left: 70px;
+            }
             @media (max-width: 530px) {
+                width: 90px;
+                height: 90px;
+                margin-left: 50px;
+            }
+            @media (max-width: 400px) {
                 width: 70px;
                 height: 70px;
+                margin-left: 30px;
+            }
+            img{
+                width: 100px;
+                height: 100px;
+                @media (max-width: 530px) {
+                    width: 70px;
+                    height: 70px;
+                }
+                @media (max-width: 400px) {
+                    width: 50px;
+                    height: 50px;
+                }
             }
         }
         ul{
@@ -48,6 +76,7 @@ const HEADER = styled.header`
                 color: #ffffff;
                 font-size: 1.2rem;
                 margin: 0 10px;
+                font-weight: 500;
                 &:hover{
                     border-bottom: solid 1px #ff7b00;
                     color: #ff7b00;
@@ -75,8 +104,10 @@ const Header = ({userSize, userMenu}) => {
     return (
         <HEADER>
             <section style={{justifyContent: screenSize < 768 && "space-between"}}>
-                <img src={hoomanLogo} alt="hooman-sanat"/>
-                {screenSize > 768 ? <ul>
+                <div className='logo'>
+                    <img src={hoomanLogo} alt="hooman-sanat"/>
+                </div>
+                {screenSize > 867 ? <ul>
                     <li>خانه</li>
                     <li>محصولات</li>
                     <li>وبلاگ</li>
@@ -84,7 +115,7 @@ const Header = ({userSize, userMenu}) => {
                     <li>تماس با ما</li>
                     <li>درباره ما</li>
                     <li>مشتریان</li>
-                </ul> : <i className="bi bi-list fs-1 text-white ms-5" onClick={() => setMenu(!menu)}></i>}
+                </ul> : <i className="bi bi-list fs-1 text-white" style={{cursor: "pointer"}} onClick={() => setMenu(!menu)}></i>}
             </section>
         </HEADER>
     );
