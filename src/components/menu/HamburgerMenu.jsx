@@ -6,6 +6,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 // styled-components
 const DIV_ANIMATION = styled.div`
+    width: 200px;
+    height: 100vh;
+    background: red;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end; */
     @keyframes fadeIn {
        0%{
         opacity: 0;
@@ -16,51 +26,55 @@ const DIV_ANIMATION = styled.div`
         transform: translateX(0);
        } 
     }
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(2rem);
+        }
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding-left: 10px;
+        li{
+            list-style: none;
+            cursor: pointer;
+            transition: all .3s;
+            color: #fff;
+            font-size: 1rem;
+            &:hover{
+                border-bottom: solid 1px #ff7b00;
+                color: #ff7b00;
+                transform: translateY(-3px);
+                transition: all .3s;
+            }
+        }
+    }
 `;
 const LI = styled.li`
-    cursor: pointer;
-    transition: all .3s;
-    &:hover{
-        border-bottom: solid 1px #ff7b00;
-        color: #ff7b00;
-        transform: translateY(-3px);
-        transition: all .3s;
-    }
+    
 `;
 
 const HamburgerMenu = ({userMenu}) => {
     const {menu, setMenu} = userMenu;
 
     return (
-        <DIV_ANIMATION style={{zIndex: "100", animation: menu && 'fadeIn .1s ease-in'}} 
-            className='w-25 min-vh-100 p-3 bg-white position-absolute top-0 start-0'
-        >
-            <i className="bi bi-x fs-1 text-black"
-                style={{cursor: "pointer"}}
-                onClick={() => setMenu(false)}
-            ></i>
-            <ul className="list-group list-group-flush d-flex flex-column justify-content-center align-items-center">
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    خانه
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    محصولات
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    وبلاگ
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    رضایت مشتریان
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    تماس با ما
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    درباره ما
-                </LI>
-                <LI className="list-group-item" style={{background: "inherit"}}>
-                    مشتریان ما
-                </LI>
+        <DIV_ANIMATION style={{animation: menu ? 'fadeIn .2s ease-in' : 'fadeOut .2s ease-in-out'}}>
+            <i className="bi bi-caret-left-fill fs-3 text-white" onClick={() => setMenu(false)}></i>
+            <ul>
+                <li>خانه</li>
+                <li>محصولات</li>
+                <li>وبلاگ</li>
+                <li>رضایت مشتریان</li>
+                <li>تماس با ما</li>
+                <li>درباره ما</li>
+                <li>مشتریان ما</li>
             </ul>
         </DIV_ANIMATION>
     );

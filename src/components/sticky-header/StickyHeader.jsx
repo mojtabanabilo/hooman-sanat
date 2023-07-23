@@ -29,22 +29,18 @@ const HEADER = styled.header`
 const StickyHeader = () => {
     AOS.init();
     return (
-        <HEADER 
-            data-aos="fade-down" 
-            data-aos-delay="50" 
-            className='sh-1 w-100 p-3 position-fixed top-0 bg-light d-flex justify-content-center align-items-center'
-        >
-            <img src={hoomanLogo} alt="hooman-sanat"/>
-            <ul className='d-flex m-auto'>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>خانه</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>محصولات</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>وبلاگ</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>رضایت مشتریان</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>تماس با ما</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>درباره ما</li>
-                <li className='ms-lg-4 ms-md-3 ms-sm-2 fs-lg-5 fs-md-1'>مشتریان</li>
+        <header data-aos="fade-down" data-aos-delay="50">
+            {/* <img src={hoomanLogo} alt="hooman-sanat"/> */}
+            <ul>
+                <li>خانه</li>
+                <li>محصولات</li>
+                <li>وبلاگ</li>
+                <li>رضایت مشتریان</li>
+                <li>تماس با ما</li>
+                <li>درباره ما</li>
+                <li>مشتریان</li>
             </ul>
-        </HEADER>
+        </header>
     );
 };
 

@@ -1,38 +1,64 @@
 import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import hoomanLogo from "../../assets/pic/logo-31-1-1.png";
-import banner from "../../assets/pic/banner.jpg"
+import banner from "../../assets/pic/banner.jpg";
 
 // styled-components
 const HEADER = styled.header`
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    display: flex;
+    align-items: flex-start;
     background-image: url(${banner});
     background-size: cover;
     background-repeat: no-repeat;
-    img{
-        width: 100px;
-        height: 100px;
+    padding: 20px;
+    @media (max-width: 768px) {
+        background-size: 130% 100%;
+        background-position: left;
     }
-    li{
-        list-style-type: none;
-        cursor: pointer;
-        transition: all .3s;
-        &:hover{
-            border-bottom: solid 1px #ff7b00;
-            color: #ff7b00;
-            transform: translateY(-3px);
-            transition: all .3s;
+    @media (max-width: 470px) {
+        background-size: 150% 100%;
+    }
+    @media (max-width: 380px) {
+        background-size: 180% 100%;
+    }
+    section{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        img{
+            width: 100px;
+            height: 100px;
+            @media (max-width: 530px) {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            li{
+                list-style-type: none;
+                cursor: pointer;
+                transition: all .3s;
+                color: #ffffff;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                &:hover{
+                    border-bottom: solid 1px #ff7b00;
+                    color: #ff7b00;
+                    transform: translateY(-3px);
+                    transition: all .3s;
+                }
+            }
         }
     }
 `;
-const RESPONSIVE = styled.div`
-    @media (max-width: 768px) {
-        .h-1{
-            background-size: contain;
-        } 
-    }
-`;
+
 
 const Header = ({userSize, userMenu}) => {
     const {menu, setMenu} = userMenu;
@@ -47,22 +73,20 @@ const Header = ({userSize, userMenu}) => {
     }, [])
 
     return (
-        <RESPONSIVE>
-            <HEADER className={`h-1 p-3`}>
-                <section className={`h-s-1 mw-100 mh-100 d-flex justify-content-start align-items-center ${screenSize < 650 && 'w-100 d-flex justify-content-between'}`}>
-                    <img src={hoomanLogo} alt="hooman-sanat"/>
-                    {screenSize > 650 ? <ul className='d-flex me-4  text-center'>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>خانه</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>محصولات</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>وبلاگ</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>رضایت مشتریان</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>تماس با ما</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>درباره ما</li>
-                        <li className={`ms-lg-4 ms-md-3 text-light fs-4 ${screenSize < 768 && 'fs-6 ms-3'}`}>مشتریان</li>
-                    </ul> : <i className="bi bi-list fs-1 text-white ms-5" style={{cursor: "pointer"}} onClick={() => setMenu(!menu)}></i>}
-                </section>
-            </HEADER>
-        </RESPONSIVE>
+        <HEADER>
+            <section style={{justifyContent: screenSize < 768 && "space-between"}}>
+                <img src={hoomanLogo} alt="hooman-sanat"/>
+                {screenSize > 768 ? <ul>
+                    <li>خانه</li>
+                    <li>محصولات</li>
+                    <li>وبلاگ</li>
+                    <li>رضایت مشتریان</li>
+                    <li>تماس با ما</li>
+                    <li>درباره ما</li>
+                    <li>مشتریان</li>
+                </ul> : <i className="bi bi-list fs-1 text-white ms-5" onClick={() => setMenu(!menu)}></i>}
+            </section>
+        </HEADER>
     );
 };
 
