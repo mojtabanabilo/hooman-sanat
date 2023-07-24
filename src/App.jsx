@@ -31,7 +31,7 @@ const App = () => {
       <Header userSize={{screenSize, setScreenSize}} userMenu={{menu, setMenu}}/>
       {menu && screenSize < 867 && <HamburgerMenu userMenu={{menu, setMenu}}/>}
       {scrollY > 110 && <StickyHeader />}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

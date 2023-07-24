@@ -8,25 +8,23 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const DIV_ANIMATION = styled.div`
     width: 200px;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     background: linear-gradient(360deg, #2a170b 0%, #794509 35%, #b84000 100%);    
     top: 0%;
-    left: 100%;
-    transform: translateX(-100%);
+    right: 0%;
+    /* transform: translateX(-0%); */
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    @keyframes fadeIn {
-       0%{
-        opacity: 0;
-        transform: translateX(0);
-       }
-       100%{
-        opacity: 1;
-        transform: translateX(-2rem);
-       } 
+    @keyframes myAnim {
+        0% {
+            transform: translateX(100px);
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
     i{
         cursor: pointer;
@@ -60,7 +58,7 @@ const HamburgerMenu = ({userMenu}) => {
     const {menu, setMenu} = userMenu;
 
     return (
-        <DIV_ANIMATION style={{animation: menu && 'fadeIn .3s ease-in-out'}}>
+        <DIV_ANIMATION style={{animation: menu && 'myAnim 0.3s linear 0s 1 normal forwards'}}>
             <i className="bi bi-caret-right-fill fs-3 text-white" onClick={() => setMenu(false)}></i>
             <ul>
                 <li>خانه</li>
