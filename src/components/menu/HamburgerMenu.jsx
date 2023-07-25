@@ -8,16 +8,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const DIV_ANIMATION = styled.div`
     width: 200px;
     height: 100vh;
-    position: absolute;
-    background: linear-gradient(360deg, #2a170b 0%, #794509 35%, #b84000 100%);    
+    position: fixed;
+    background: linear-gradient(360deg, #999999 0%, #6e6e6e 35%, #3a3a3a 100%);    
     top: 0%;
     right: 0%;
-    /* transform: translateX(-0%); */
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
+    z-index: 500;
     @keyframes myAnim {
         0% {
             transform: translateX(100px);
@@ -40,7 +40,7 @@ const DIV_ANIMATION = styled.div`
             list-style: none;
             cursor: pointer;
             transition: all .3s;
-            color: #fff;
+            color: #ffffff;
             font-size: 1.1rem;
             &:hover{
                 border-bottom: solid 1px #ffffff;

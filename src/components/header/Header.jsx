@@ -107,7 +107,7 @@ const Header = ({userSize, userMenu}) => {
                 <div className='logo'>
                     <img src={hoomanLogo} alt="hooman-sanat"/>
                 </div>
-                {screenSize > 867 ? <ul>
+                {screenSize > 876 ? <ul>
                     <li>خانه</li>
                     <li>محصولات</li>
                     <li>وبلاگ</li>

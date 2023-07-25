@@ -8,8 +8,10 @@ import hoomanLogo from "../../assets/pic/logo-31-1-1.png";
 const HEADER = styled.header`
     width: 100%;
     height: 80px;
+    padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     align-items: center;
     background: #ffffff;
     position: fixed;
@@ -17,10 +19,6 @@ const HEADER = styled.header`
     img{
         width: 60px;
         height: 60px;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
         margin-right: 10px;
         @media (max-width: 768px) {
             width: 50px;
@@ -54,12 +52,14 @@ const HEADER = styled.header`
     }
 `;
 
-const StickyHeader = () => {
+const StickyHeader = ({userSize, userMenu}) => {
+    const {screenSize, setScreenSize} = userSize;
+    const {menu, setMenu} = userMenu; 
     AOS.init();
     return (
         <HEADER data-aos="fade-down" data-aos-delay="50">
             <img src={hoomanLogo} alt="hooman-sanat"/>
-            <ul>
+            {screenSize > 570 ? <ul>
                 <li>خانه</li>
                 <li>محصولات</li>
                 <li>وبلاگ</li>
@@ -67,7 +67,7 @@ const StickyHeader = () => {
                 <li>تماس با ما</li>
                 <li>درباره ما</li>
                 <li>مشتریان</li>
-            </ul>
+            </ul> : <i className="bi bi-list fs-1 text-black" style={{cursor: "pointer"}} onClick={() => setMenu(!menu)}></i>}
         </HEADER>
     );
 };
