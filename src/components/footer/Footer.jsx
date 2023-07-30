@@ -16,6 +16,11 @@ const FOOTER = styled.footer`
         justify-content: center;
         align-items: flex-start;
         flex-direction: row-reverse;
+        @media (max-width: 956px) {
+            flex-direction: column-reverse;
+            align-items: center;
+            height: fit-content;
+        }
         .table{
             width: 50%;
             height: 200px;
@@ -23,6 +28,9 @@ const FOOTER = styled.footer`
             display: flex;
             justify-content: center;
             align-items: center;
+            @media (max-width: 956px) {
+                width: 100%;
+            }
             p{
                 padding: 0;
                 margin: 0;
@@ -35,6 +43,9 @@ const FOOTER = styled.footer`
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                @media (max-width: 956px) {
+                    width: 80%;
+                }
                 .header{
                     display: flex;
                     justify-content: space-between;
@@ -72,6 +83,16 @@ const FOOTER = styled.footer`
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-area: auto;
+            @media (max-width: 956px) {
+                flex-direction: column-reverse;
+                align-items: center;
+                height: fit-content;
+                width: 80%;
+            }
+            @media (max-width: 600px) {
+                display: flex;
+                flex-direction: column;
+            }
             div{
                 display: flex;
                 flex-direction: column;
@@ -110,7 +131,7 @@ const Footer = () => {
                 <div className='contact'>
                     <div>
                         <h4>آدرس</h4>
-                        <p style={{textAlign: "center"}}>بندر عباس, بلوار امام خمینی, نرسیده به شهر نمایش, ساختمان تجاری اداری عرفان, طبقه پنجم, واحد 53</p>
+                        <p style={{textAlign: "justify"}}>بندر عباس, بلوار امام خمینی, نرسیده به شهر نمایش, ساختمان تجاری اداری عرفان, طبقه پنجم, واحد 53</p>
                     </div>
                     <div>
                         <h4>کد پستی</h4>
