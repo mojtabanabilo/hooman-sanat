@@ -94,10 +94,10 @@ const Header = ({userSize, userMenu}) => {
     const {screenSize, setScreenSize} = userSize;
     
     useEffect(() => {
-        const handleScreenSize = () => setScreenSize(window.innerWidth);
-        window.addEventListener("resize", handleScreenSize);
+        setScreenSize(window.innerWidth)
+        window.addEventListener("resize", setScreenSize(window.innerWidth));
         return () => {
-          window.removeEventListener("resize", handleScreenSize)
+          window.removeEventListener("resize", setScreenSize(window.innerWidth))
         }
     }, [])
 

@@ -50,9 +50,6 @@ const DIV_ANIMATION = styled.div`
         }
     }
 `;
-const LI = styled.li`
-    
-`;
 
 const HamburgerMenu = ({userMenu}) => {
     const {menu, setMenu} = userMenu;
