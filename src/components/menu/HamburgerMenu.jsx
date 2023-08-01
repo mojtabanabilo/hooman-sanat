@@ -9,7 +9,7 @@ const DIV_ANIMATION = styled.div`
     width: 200px;
     height: 100vh;
     position: fixed;
-    background: linear-gradient(360deg, #999999 0%, #6e6e6e 35%, #3a3a3a 100%);    
+    background: linear-gradient(360deg, #dadada 35%, #7a7a7a 100%);    
     top: 0%;
     right: 0%;
     padding: 10px;
