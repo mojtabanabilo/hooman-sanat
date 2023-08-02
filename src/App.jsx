@@ -32,7 +32,7 @@ const App = () => {
       <Header userSize={{screenSize, setScreenSize}} userMenu={{menu, setMenu}}/>
       {menu && screenSize < 867 && <HamburgerMenu userMenu={{menu, setMenu}}/>}
       {scrollY > 110 && <StickyHeader userSize={{screenSize, setScreenSize}} userMenu={{menu, setMenu}}/>}
-      <SectionAboutUs />
+      <SectionAboutUs userSize={{screenSize, setScreenSize}}/>
       <Footer />
     </div>
   );
