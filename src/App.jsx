@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer';
 import StickyHeader from './components/sticky-header/StickyHeader';
 import HamburgerMenu from './components/menu/HamburgerMenu';
 import SectionAboutUs from './components/section-aboutus/SectionAboutUs';
+import Products from './components/products/Products';
 
 const App = () => {
   const [scrollY, setScrollY] = useState(null);
@@ -33,6 +34,7 @@ const App = () => {
       {menu && screenSize < 867 && <HamburgerMenu userMenu={{menu, setMenu}}/>}
       {scrollY > 110 && <StickyHeader userSize={{screenSize, setScreenSize}} userMenu={{menu, setMenu}}/>}
       <SectionAboutUs userSize={{screenSize, setScreenSize}}/>
+      <Products />
       <Footer />
     </div>
   );
