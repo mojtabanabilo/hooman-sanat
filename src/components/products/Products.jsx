@@ -33,11 +33,11 @@ const DIV = styled.div`
       width: 200px;
       height: 200px;
       border-radius: 10px;
-      @media (max-width: 768px) {
-      width: 100%; /* Adjust the width for smaller screens */
-      margin: 0;
-      padding: 10px; /* Adjust the padding for smaller screens */
-    }
+        @media (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+      }
     }
     p{
       margin-top: 10px;
@@ -45,28 +45,28 @@ const DIV = styled.div`
       font-family: Arial, Helvetica, sans-serif;
     }
     @media (max-width: 768px) {
-      width: 100%; /* Adjust the width for smaller screens */
+      width: 100%; 
       margin: 0;
-      padding: 10px; /* Adjust the padding for smaller screens */
+      padding: 10px; 
     }
 `;
-const Products = ({userSize}) => {
-  const {screenSize, setScreenSize} = userSize;
+const Products = () => {
   const breakpoints = {
-    // When window width is >= 320px
     320: {
       slidesPerView: 1,
       spaceBetween: 10,
     },
-    // When window width is >= 480px
     480: {
       slidesPerView: 2,
       spaceBetween: 20,
     },
-    // When window width is >= 768px
     768: {
       slidesPerView: 3,
       spaceBetween: 30,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 40,
     },
   };
   return (
@@ -74,18 +74,17 @@ const Products = ({userSize}) => {
       <h1 style={{marginRight: "20px"}}>جدید ترین</h1>
       <div style={{border: "solid 1.5px #ff5100"}}></div>
         <Swiper 
-            style={{padding: "20px"}}
+            style={{margin: "20px"}}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={10}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
             breakpoints={breakpoints}
         >
-          <SwiperSlide style={{ width: "800px" }}>
+          <SwiperSlide>
             <DIV className="item">
               <img src={trox30} alt="product" />
               <p>مته Torx 30 در 10 میلی متری</p>
