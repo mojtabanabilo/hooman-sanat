@@ -1,7 +1,11 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { styled } from "styled-components";
 import 'swiper/css';
-import { styled } from 'styled-components';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 // images
 import trox30 from "../../assets/pic/products/366-300x300.jpg";
@@ -13,108 +17,125 @@ import setmate2 from "../../assets/pic/products/377-300x300.jpg";
 import setmate3 from "../../assets/pic/products/376-300x300.jpg";
 import negahdarandeMate from "../../assets/pic/products/375-300x300.jpg";
 
-
 // styled-components
-const SLIDE_PRODUCT = styled.div`
-    width: 100%;
-    height: fit-content;
-    padding: 20px;
+const DIV = styled.div`
+    width: 250px;
+    height: 300px;
+    background: #ececec;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    .section-items{
-        width: 100%;
-        height: 400px;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        border-top: solid #ff5100 2px;
-        padding: 30px 10px 0 10px;
-        .item{
-            width: 250px;
-            height: 300px;
-            padding: 10px;
-            background: #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 8px 8px 20px #979797;
-            img{
-                width: 200px;
-                height: 200px;
-                border-radius: 10px;
-                margin-top: 10px;
-            }
-            p{
-                text-align: center;
-                margin: 10px 0 0 0;
-            }
-        }
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding-top: 20px;
+    margin: 0 10px;
+    img{
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      @media (max-width: 768px) {
+      width: 100%; /* Adjust the width for smaller screens */
+      margin: 0;
+      padding: 10px; /* Adjust the padding for smaller screens */
+    }
+    }
+    p{
+      margin-top: 10px;
+      font-size: 1.1rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    @media (max-width: 768px) {
+      width: 100%; /* Adjust the width for smaller screens */
+      margin: 0;
+      padding: 10px; /* Adjust the padding for smaller screens */
     }
 `;
-
-const Products = () => {
-    return (
-        <SLIDE_PRODUCT>
-            <h1>جدید ترین</h1>
-            <div className='section-items'>
-                <Swiper
-                    spaceBetween={1}
-                    slidesPerView={4}
-                >
-                    <SwiperSlide style={{width:"800px"}}>
-                    <div className="item">
-                        <img src={trox30} alt="product"/>
-                        <p>مته Torx  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={xzn30} alt="product"/>
-                        <p>مته XZN  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={ribe30} alt="product"/>
-                        <p>مته Ribe  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={hexagonal30} alt="product"/>
-                        <p>مته Hexagonal 30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={setmate1} alt="product"/>
-                        <p>مته Torx  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={setmate2} alt="product"/>
-                        <p>مته XZN  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={setmate3} alt="product"/>
-                        <p>مته Ribe  30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="item">
-                        <img src={negahdarandeMate} alt="product"/>
-                        <p>مته Hexagonal 30 در 10 میلی متری</p>
-                    </div>
-                    </SwiperSlide>
-                </Swiper>
-            </div>
-        </SLIDE_PRODUCT>
-    );
+const Products = ({userSize}) => {
+  const {screenSize, setScreenSize} = userSize;
+  const breakpoints = {
+    // When window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    // When window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    // When window width is >= 768px
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  };
+  return (
+    <>
+      <h1 style={{marginRight: "20px"}}>جدید ترین</h1>
+      <div style={{border: "solid 1.5px #ff5100"}}></div>
+        <Swiper 
+            style={{padding: "20px"}}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={10}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+            breakpoints={breakpoints}
+        >
+          <SwiperSlide style={{ width: "800px" }}>
+            <DIV className="item">
+              <img src={trox30} alt="product" />
+              <p>مته Torx 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={xzn30} alt="product" />
+              <p>مته XZN 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={ribe30} alt="product" />
+              <p>مته Ribe 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={hexagonal30} alt="product" />
+              <p>مته Hexagonal 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={setmate1} alt="product" />
+              <p>مته Torx 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={setmate2} alt="product" />
+              <p>مته XZN 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={setmate3} alt="product" />
+              <p>مته Ribe 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+          <SwiperSlide>
+            <DIV className="item">
+              <img src={negahdarandeMate} alt="product" />
+              <p>مته Hexagonal 30 در 10 میلی متری</p>
+            </DIV>
+          </SwiperSlide>
+        </Swiper>
+    </>
+  );
 };
 
 export default Products;

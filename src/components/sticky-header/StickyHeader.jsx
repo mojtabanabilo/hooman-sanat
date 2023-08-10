@@ -16,6 +16,8 @@ const HEADER = styled.header`
     background: #ffffff;
     position: fixed;
     top: 0;
+    z-index: 500;
+    box-shadow: 0px 8px 20px #ff7b00;
     img{
         width: 60px;
         height: 60px;
